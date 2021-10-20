@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-//funcao principal da forca
+//funcao forca 
 void forca (int contador, std::string matriz_forca, int vida, std::string dica){
 	std::cout << "Numero de vidas: " << vida << std::endl;
 	std::cout << "Dica: " << dica << std::endl;
@@ -66,11 +66,12 @@ void forca (int contador, std::string matriz_forca, int vida, std::string dica){
 		std::cout << "|\n";
 		std::cout << "|\n";
 	}
-	for(int j = 0; j < contador; j++){
-		std::cout << matriz_forca[j] << " ";
+	//matriz forca
+	for(int i = 0; i < contador; i++){
+		std::cout << matriz_forca[i] << " ";
 	}
 	std::cout << "\n";
-	for(int j = 0; j < contador; j++){
+	for(int i = 0; i < contador; i++){
 		std::cout << "- ";
 	}
 }
@@ -101,10 +102,11 @@ int main() {
 	//variaveis
 	int contador = palavra.size();
 	char matriz_forca [contador];
-	char matriz_comparador[contador];
 	int vida = 6;
 	int comparador_vida = 1;
 	int vitoria = 0;
+	std::string nova_dica;
+	std::string nova_palavra;
 	
 	std::cout << "BEM VINDO AO JOGO DA FORCA!\n";
 	//laço principal
@@ -122,7 +124,7 @@ int main() {
 		
 		//corre a letra pela matriz
 		for(int i = 0; i < contador; i++){
-			if(matriz_comparador[i] == letra){
+			if(matriz_forca[i] == letra){
 				comparador_letra = 1;
 			}
 		}
@@ -131,7 +133,6 @@ int main() {
 		if(comparador_letra == 0){
 			for(int i = 0; i < contador; i++){
 				if(palavra[i] == letra){
-					matriz_comparador[i] = letra;
 					matriz_forca[i] = letra;
 					comparador_vida = 1;
 					system("cls");
@@ -167,7 +168,6 @@ int main() {
 				std::cout << "Erro ao ler arquivo!";
 				return 0;
 			}else{
-				std::string nova_palavra;
 				std::cout << "Adicione uma nova palavra ao jogo da forca!!!\nOBS: No lugar de espaco use -: ";
 				std::cin >> nova_palavra;
 				system("cls");
@@ -178,7 +178,6 @@ int main() {
 				std::cout << "Erro ao ler arquivo!";
 				return 0;
 			}else{
-				std::string nova_dica;
 				std::cout << "Adicione uma dica para a palavra adicionada ao jogo da forca: ";
 				std::cin >> nova_dica;
 				//salva palavra e dica juntos
