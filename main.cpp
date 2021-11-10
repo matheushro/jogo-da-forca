@@ -4,7 +4,10 @@
 #include <cstdlib>
 #include <ctime>
 //funcao forca 
-void forca (int contador, std::string matriz_forca, int vida, std::string dica){
+void forca (int contador, char matriz_forca[], int vida, std::string dica){
+	std::cout << "\n---> ";
+	std::cout << matriz_forca;
+	std::cout << " <---\n";
 	std::cout << "Numero de vidas: " << vida << std::endl;
 	std::cout << "Dica: " << dica << std::endl;
 	if(vida == 6){
@@ -42,7 +45,7 @@ void forca (int contador, std::string matriz_forca, int vida, std::string dica){
 		std::cout << "|       |\n";
 		std::cout << "|       |\n";
 		std::cout << "|     (>_<)\n";
-		std::cout << "|      /|\\\ \n";
+		std::cout << "|      /|\\\\ \n";
 		std::cout << "|\n";
 		std::cout << "|\n";
 		std::cout << "|\n";
@@ -52,7 +55,7 @@ void forca (int contador, std::string matriz_forca, int vida, std::string dica){
 		std::cout << "|       |\n";
 		std::cout << "|       |\n";
 		std::cout << "|     (>_<)\n";
-		std::cout << "|      /|\\\ \n";
+		std::cout << "|      /|\\\\ \n";
 		std::cout << "|      /     \n";
 		std::cout << "|\n";
 		std::cout << "|\n";
@@ -62,8 +65,8 @@ void forca (int contador, std::string matriz_forca, int vida, std::string dica){
 		std::cout << "|       |\n";
 		std::cout << "|       |\n";
 		std::cout << "|     (>_<)\n";
-		std::cout << "|      /|\\\ \n";
-		std::cout << "|      / \\\  \n";
+		std::cout << "|      /|\\\\ \n";
+		std::cout << "|      / \\\\  \n";
 		std::cout << "|\n";
 		std::cout << "|\n";
 		std::cout << "|\n";
@@ -98,7 +101,7 @@ int main() {
 	            b++;
 	        }
 		}	
-		std::cout << b;
+		// std::cout << b;
 		rand_line = rand() % b;
 		std::string line;
 		file_forca.close();
@@ -140,7 +143,7 @@ int main() {
 			}
 	    }
 	}
-	std::cout << rand_line;
+	// std::cout << rand_line;
 	//variaveis
 	int contador = palavra.size();
 	char matriz_forca [contador];
@@ -150,6 +153,12 @@ int main() {
 	std::string nova_dica;
 	std::string nova_palavra;
 	
+	// inicializa as posições das letras com ' '
+	// aqui não estava permitindo o array posicionar corretamente as letras nas posições
+	for (int i = 0; i < contador; i++) {
+		matriz_forca[i] = ' ';
+	}
+
 	std::cout << "BEM VINDO AO JOGO DA FORCA!\n";
 	//laço principal
 	for(vida; vida > 0; vida--){	
